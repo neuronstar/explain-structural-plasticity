@@ -1,48 +1,51 @@
 'use strict'
 
 const webpack = require('webpack')
-const { VueLoaderPlugin } = require('vue-loader')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const path = require('path')
+const merge = require('webpack-merge')
+const baseConfig = require('./webpack.config.base')
 
-module.exports = {
+const HOST = 'localhost'
+const PORT = 8080
+
+module.exports = merge(baseConfig, {
   mode: 'development',
-  entry: [
-    './src/index.js'
-  ],
+
   devServer: {
+    clientLogLevel: 'warning',
     hot: true,
+    contentBase: 'dist',
+    compress: true,
+    host: HOST,
+    port: PORT,
+    open: true,
+    overlay: { warnings: false, errors: true },
+    publicPath: '/',
+    quiet: true,
     watchOptions: {
       poll: true
     }
   },
+
   module: {
     rules: [
-      {
-        test: /\.vue$/,
-        use: 'vue-loader'
-      },
       {
         test: /\.css$/,
         use: [
           'vue-style-loader',
           'css-loader'
         ]
-      },
-      {
-        test: /\.js$/,
-        use: 'babel-loader'
+      }, {
+        test: /\.styl(us)?$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'stylus-loader'
+        ]
       }
     ]
   },
+
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'index.html',
-      inject: true
-    })
+    new webpack.HotModuleReplacementPlugin()
   ]
-}
+})

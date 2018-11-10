@@ -1,14 +1,13 @@
 <template>
-  <div class="full-width center-content">
-    <h1>Explain Structural Plasticity Like I am Five</h1>
+  <div class="container center-content">
+    <router-view />
   </div>
 </template>
 
-<script>
-import HelloComponent from './components/HelloComponent.vue'
-export default {
-  components: {
-    HelloComponent
-  }
-}
-</script>
+<style lang="stylus" scoped>
+
+.container
+  font-family 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+  max-width 1200px
+
+</style>
