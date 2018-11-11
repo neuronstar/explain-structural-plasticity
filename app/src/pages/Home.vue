@@ -1,16 +1,20 @@
 <template>
-  <div class="full-width center-content">
-    <img src="/static/img/logo.png" >
-    <welcome-message name="World" />
+  <div id="app">
+    <Navbar></Navbar>
+    <Elements></Elements>
   </div>
 </template>
 
 <script>
 import WelcomeMessage from 'components/Home/WelcomeMessage'
+import Navbar from 'components/Navbar'
+import Elements from 'components/Animie/Elements'
 
 export default {
   components: {
-    WelcomeMessage
+    'WelcomeMessage': WelcomeMessage,
+    'Navbar': Navbar,
+    'Elements': Elements
   }
 }
 </script>
