@@ -1,30 +1,100 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://unpkg.com/buefy/dist/buefy.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/css/bulma/css/bulma.min.css">
+  <link rel="stylesheet" href="assets/css/anime.css">
 </head>
 
 <body>
-    <div id="app">
-        <!-- Buefy components goes here -->
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">
+        Explain Structrual Plasticity
+      </a>
 
-        adfasds
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarCol">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div id="navbarCol" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-danger" href="https://www.biorxiv.org/content/early/2018/11/08/466136" target="_blank">
+              <strong>Link to Paper</strong>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Navbar END -->
+
+
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Explain Structural Plasiticity</h1>
+      <h2 class="subtitle">
+        Explain structural plasticity in animations.
+      </h2>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container">
+      <div class="notification">
+        Link to paper
+      </div>
     </div>
 
-    <script src="https://unpkg.com/vue"></script>
-    <!-- Full bundle -->
-    <script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>
+    <div class="container">
 
-    <!-- Individual components -->
-    <script src="https://unpkg.com/buefy/dist/components/table"></script>
-    <script src="https://unpkg.com/buefy/dist/components/input"></script>
+      <div id="neuron">
 
-    <script>
-        new Vue({
-            el: '#app'
-        })
-    </script>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <script src="assets/js/p5/p5.min.js">
+    < script >
+      function setup() {
+        var cnv = createCanvas(400, 400);
+        cnv.parent('#neuron');
+        background(100, 100, 100);
+
+        // translucent stroke using alpha value
+        stroke(0, 0, 0, 15);
+      }
+
+    function draw() {
+      // draw two random chords each frame
+      randomChord();
+      randomChord();
+    }
+
+    function randomChord() {
+      // find a random point on a circle
+      var angle1 = random(0, 2 * PI);
+      var xpos1 = 200 + 200 * cos(angle1);
+      var ypos1 = 200 + 200 * sin(angle1);
+      var xpos2 = 200 + 210 * cos(angle1);
+      var ypos2 = 200 + 210 * sin(angle1);
+
+      // draw a line between them
+      line(xpos1, ypos1, xpos2, ypos2);
+    }
+  </script>
+
 </body>
+
 </html>
